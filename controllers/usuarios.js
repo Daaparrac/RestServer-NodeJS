@@ -1,7 +1,9 @@
-const { response } = require('express');
+const { response, request } = require('express');
 
-const usuariosGet = (req, res = response) => {
-    res.json({ msg: 'get - API - Controlador' })
+const usuariosGet = (req = request, res = response) => {
+    //aca podemos usar destructuración de los datos requeridos
+    const params = req.query;
+    res.json({ msg: 'get - API - Controlador', params })
 }
 
 const usuariosPost = (req, res = response) => {
@@ -11,7 +13,8 @@ const usuariosPost = (req, res = response) => {
 }
 
 const usuariosPut = (req, res = response) => {
-    res.json({ msg: 'Put - API - Controlador' })
+    const id = req.params.id;
+    res.json({ msg: 'Put - API - Controlador', id })
 }
 
 const usuariosPatch = (req, res = response) => {
